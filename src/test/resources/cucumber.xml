@@ -7,6 +7,6 @@
     <context:component-scan base-package="cucumber.runtime.java.spring"/>
     <context:annotation-config/>
 
-    <import resource="classpath*:/camel-context.xml"/>
+    <import resource="classpath*:/META-INF/spring/camel-context.xml"/>
 
 </beans>

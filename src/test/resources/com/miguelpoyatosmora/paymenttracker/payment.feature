@@ -1,7 +1,6 @@
-Feature: Depositing money in to a User account
+Feature: Sending payments to the tracker
 
-@UserAccounts
-Scenario: Depositing money in to User's account should add money to the User's current balance
-Given a User has no money in their account
-When £100 is deposited in to the account
+Scenario: Sending payments to the tracker should add money to the current balance
+Given there is no money in the current balance
+When £100 is paid
 Then the balance should be £100
