@@ -1,20 +1,31 @@
 package com.miguelpoyatosmora.paymenttracker;
 
-import com.miguelpoyatosmora.paymenttracker.model.Money;
 import org.springframework.stereotype.Component;
 
-import java.util.Set;
+import java.math.BigDecimal;
+import java.util.Currency;
+import java.util.HashMap;
+import java.util.Map;
 
 @Component
 public class DefaultBank implements Bank {
 
+    private Map<Currency, BigDecimal> balances = new HashMap<Currency, BigDecimal>();
+
     @Override
-    public void deposit(Money amount) {
-        //To change body of implemented methods use File | Settings | File Templates.
+    public void deposit(Currency currency, BigDecimal amount) {
+
+        BigDecimal currentBalance = balances.get(currency);
+        if (currentBalance == null) {
+            balances.put(currency, amount);
+        } else {
+            BigDecimal newAmount = currentBalance.add(amount);
+            balances.put(currency, newAmount);
+        }
     }
 
     @Override
-    public Set<Money> getBalances() {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public Map<Currency, BigDecimal> getBalances() {
+        return balances;
     }
 }

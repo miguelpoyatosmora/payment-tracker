@@ -37,8 +37,8 @@
     </camelContext>
 
 
-    <bean id="bank" class="com.miguelpoyatosmora.paymenttracker.DefaultBank">
-    </bean>
+    <!--<bean id="bank" class="com.miguelpoyatosmora.paymenttracker.DefaultBank">
+    </bean>-->
 
     <!-- This creates an embedded ActiveMQ Broker -->
     <broker xmlns="http://activemq.apache.org/schema/core" useJmx="true" persistent="false">

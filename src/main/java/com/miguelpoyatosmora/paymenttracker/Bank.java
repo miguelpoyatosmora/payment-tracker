@@ -1,12 +1,12 @@
 package com.miguelpoyatosmora.paymenttracker;
 
-import com.miguelpoyatosmora.paymenttracker.model.Money;
-
-import java.util.Set;
+import java.math.BigDecimal;
+import java.util.Currency;
+import java.util.Map;
 
 public interface Bank {
 
-    void deposit(Money amount);
+    void deposit(Currency currency, BigDecimal amount);
 
-    Set<Money> getBalances();
+    Map<Currency, BigDecimal> getBalances();
 }
