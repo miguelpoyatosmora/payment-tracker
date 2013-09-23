@@ -31,20 +31,22 @@
     <!-- enable Spring @Component scan -->
     <context:component-scan base-package="com.miguelpoyatosmora.paymenttracker"/>
 
-    <camelContext xmlns="http://camel.apache.org/schema/spring">
+    <camelContext trace="false" xmlns="http://camel.apache.org/schema/spring">
         <!-- and then let Camel use those @Component scanned route builders -->
         <contextScan/>
+
     </camelContext>
 
 
-    <!--<bean id="bank" class="com.miguelpoyatosmora.paymenttracker.DefaultBank">
-    </bean>-->
+    <bean id="bank" class="com.miguelpoyatosmora.paymenttracker.services.DefaultBank">
+    </bean>
 
     <!-- This creates an embedded ActiveMQ Broker -->
     <broker xmlns="http://activemq.apache.org/schema/core" useJmx="true" persistent="false">
         <transportConnectors>
             <transportConnector uri="tcp://localhost:61616"/>
         </transportConnectors>
+
     </broker>
 
     <!-- Lets connect the Camel ActiveMQ component to the embedded broker.
@@ -60,7 +62,7 @@
            another route which then performs content based
            routing on the messages using XPath.
     -->
-    <camelContext xmlns="http://camel.apache.org/schema/spring">
+   <!-- <camelContext xmlns="http://camel.apache.org/schema/spring">
         <route>
             <from uri="file:data?noop=true"/>
             <to uri="activemq:personnel.records"/>
@@ -78,5 +80,5 @@
             </choice>
         </route>
     </camelContext>
-
+       -->
 </beans>
